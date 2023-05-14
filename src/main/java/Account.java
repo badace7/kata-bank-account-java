@@ -34,15 +34,15 @@ public class Account {
     }
 
     private boolean isNotAuthorizedToWithdraw(int amount) {
-        return cannotWithdrawWithoutOverdraft(amount)
-                || cannotWithdrawWithOverdraft(amount);
+        return isNotAuthorizedWithoutOverdraft(amount)
+                || isNotAuthorizedWithOverdraft(amount);
     }
 
-    private boolean cannotWithdrawWithoutOverdraft(int amount) {
+    private boolean isNotAuthorizedWithoutOverdraft(int amount) {
         return (amount > this.balance && !this.authorization);
     }
 
-    private boolean cannotWithdrawWithOverdraft(int amount) {
+    private boolean isNotAuthorizedWithOverdraft(int amount) {
         return amount > (this.balance + this.overdraft);
     }
 }
